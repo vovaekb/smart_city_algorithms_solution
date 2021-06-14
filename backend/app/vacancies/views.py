@@ -62,8 +62,8 @@ def index_post():
     print(data)
     # Find most relevant vacancies
     vacancies = VacanciesService.get_best()
-    data = {
-        'rows': vacancies,
-        'count': len(vacancies)
-    }
+    data = vacancies
+    # data = {
+    #     'rows': vacancies,
+    # }
     return jsonify(data)

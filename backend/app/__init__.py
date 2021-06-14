@@ -11,6 +11,8 @@ from config import Config, DevConfig, ProductionConfig
 # Create database structure
 #Base.metadata.create_all(bind=engine)
 
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)

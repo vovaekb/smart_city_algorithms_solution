@@ -10,13 +10,25 @@ skill_schema = SkillSchema()
 skills_schema = SkillSchema(many=True)
 
 
-
 # ROUTES
 @skills_blueprint.route('/skills', methods=['GET'])
 def skills_index():
     skills = SkillService.get_all()
-    data = {
-        'rows': skills,
-        'count': len(skills)
-    }
+    data = skills
+    # data = {
+    #     'rows': skills
+    # }
     return jsonify(data)
+
+@skills_blueprint.route('/skills', methods=['POST'])
+def skills_speciality():
+    print('POST to /skills accepted')
+    data = request.get_json()
+    speciality = data['name']
+    print(speciality)
+    skills = SkillService.get_by_speciality(speciality)
+    # data = skills
+    # data = {
+    #     'rows': skills
+    # }
+    return jsonify(skills)
